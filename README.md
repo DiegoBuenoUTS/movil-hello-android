@@ -1,4 +1,4 @@
-# Tareas Bueno
+# Tareas DBueno y JUrrea
 
 Aplicacion Android desarrollada para los talleres de Programacion Movil. El proyecto mantiene el paquete `com.bueno.helloandroid` y evoluciona el ejercicio inicial hacia una app de lista de tareas con una sola `Activity`, multiples `Fragments`, persistencia local y recordatorios.
 
