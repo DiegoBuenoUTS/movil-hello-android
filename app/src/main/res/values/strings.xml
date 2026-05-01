@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">HelloAndroid-BuenoDiego</string>
+    <string name="app_name">Tareas Bueno</string>
+    <string name="task_list_title">Mis tareas</string>
+    <string name="task_list_empty">Aun no hay tareas. Agrega la primera para comenzar.</string>
+    <string name="task_add">Agregar tarea</string>
+    <string name="task_title_hint">Titulo de la tarea</string>
+    <string name="task_description_hint">Descripcion</string>
+    <string name="task_date_hint">Fecha u hora aproximada</string>
+    <string name="task_reminder">Activar recordatorio</string>
+    <string name="task_save">Guardar</string>
+    <string name="task_delete">Eliminar tarea</string>
 </resources>

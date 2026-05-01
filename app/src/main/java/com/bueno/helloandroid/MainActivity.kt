@@ -1,35 +1,34 @@
 package com.bueno.helloandroid
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
+
+    private val notificationPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        requestNotificationPermissionIfNeeded()
+    }
 
-        // Referenciar elementos de la interfaz
-        val textView = findViewById<TextView>(R.id.textView)
-        val btnSaludar = findViewById<Button>(R.id.btnSaludar)
+    private fun requestNotificationPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return
 
-        // Variable contador
-        var contador = 0
+        val hasPermission = ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.POST_NOTIFICATIONS
+        ) == PackageManager.PERMISSION_GRANTED
 
-        // Asignar acción al botón
-        btnSaludar.setOnClickListener {
-            contador++
-            textView.text = "Has hecho clic $contador veces"
-
-            // Mostrar mensaje emergente
-            Toast.makeText(
-                this,
-                "¡Botón presionado!",
-                Toast.LENGTH_SHORT
-            ).show()
+        if (!hasPermission) {
+            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
     }
 }
